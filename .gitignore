@@ -1,0 +1,8 @@
+node_modules
+dist
+.env
+.vercel
+/src/app/
+/src/utils/
+/src/app.ts
+/src/server.ts
