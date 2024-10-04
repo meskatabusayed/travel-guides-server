@@ -4,5 +4,4 @@ dist
 .vercel
 /src/app/
 /src/utils/
-/src/app.ts
-/src/server.ts
+
