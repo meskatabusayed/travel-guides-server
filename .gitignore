@@ -3,5 +3,4 @@ dist
 .env
 .vercel
 
-/src/utils/
 
