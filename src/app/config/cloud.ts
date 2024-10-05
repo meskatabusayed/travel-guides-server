@@ -1,3 +1,4 @@
+//cloud code start..
 import { v2 as cloudinary } from "cloudinary";
 
 cloudinary.config({
@@ -6,3 +7,4 @@ cloudinary.config({
   api_secret: process.env.CN_Api_secret,
 });
 export default cloudinary;
+////cloud code end

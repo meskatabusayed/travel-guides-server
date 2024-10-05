@@ -1,3 +1,4 @@
+//added in multer
 import { CloudinaryStorage } from "multer-storage-cloudinary";
 import cloudinary from "./cloud";
 import multer from "multer";
