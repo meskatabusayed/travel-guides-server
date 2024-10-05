@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Error</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="payment-error">
+        <div class="error-container">
+            <div class="error-icon">
+                <span>❌</span>
+            </div>
+            <h1 class="error-title">Payment Failed</h1>
+            <p class="error-message">Oops! Something went wrong with your payment. Please try again or contact support
+                for further assistance.</p>
+            <button class="retry-button">Retry Payment</button>
+            <button class="support-button">Contact Support</button>
+        </div>
+    </div>
+</body>
+
+<style lang="scss">
+    body,
+    html {
+        height: 100%;
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .payment-error {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+
+        .error-container {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            padding: 40px;
+            max-width: 400px;
+
+            .error-icon {
+                font-size: 5rem;
+                color: #e74c3c;
+                margin-bottom: 20px;
+            }
+
+            .error-title {
+                font-size: 2rem;
+                color: #333;
+                margin-bottom: 10px;
+            }
+
+            .error-message {
+                color: #777;
+                margin-bottom: 30px;
+            }
+
+            button {
+                border: none;
+                border-radius: 5px;
+                padding: 10px 20px;
+                font-size: 1rem;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+
+                &:not(:last-child) {
+                    margin-right: 15px;
+                }
+
+                &.retry-button {
+                    background-color: #3498db;
+                    color: #fff;
+
+                    &:hover {
+                        background-color: #2980b9;
+                    }
+                }
+
+                &.support-button {
+                    background-color: #e67e22;
+                    color: #fff;
+
+                    &:hover {
+                        background-color: #d35400;
+                    }
+                }
+            }
+        }
+    }
+</style>
+
+</html>
