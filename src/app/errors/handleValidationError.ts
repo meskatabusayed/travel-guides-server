@@ -1,3 +1,4 @@
+//handle validation error....
 import mongoose from "mongoose";
 import { IErrorSources, IGenericErrorRes } from "../interface/error";
 
@@ -10,7 +11,7 @@ const handleValidationError = (err: mongoose.Error.ValidationError): IGenericErr
 
   return {
     statusCode,
-    message: "Validation Error",
+    message: "Fetch Validation Error",
     errorSources,
   };
 };

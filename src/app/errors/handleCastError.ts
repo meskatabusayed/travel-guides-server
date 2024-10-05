@@ -1,3 +1,4 @@
+//handle cast error..
 import mongoose from "mongoose";
 import { IErrorSources, IGenericErrorRes } from "../interface/error";
 
@@ -14,7 +15,7 @@ const handleCastError = (err: mongoose.Error.CastError): IGenericErrorRes => {
 
   return {
     statusCode,
-    message: "Cast Error",
+    message: "Cast Error occurred",
     errorSources,
   };
 };

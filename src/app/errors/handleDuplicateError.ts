@@ -1,3 +1,4 @@
+//duplicate error handled...
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { IErrorSources, IGenericErrorRes } from "../interface/error";
 

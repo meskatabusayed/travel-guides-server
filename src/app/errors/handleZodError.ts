@@ -1,3 +1,4 @@
+//handle validation error....
 import { ZodError } from "zod";
 import { IErrorSources, IGenericErrorRes } from "../interface/error";
 
@@ -10,7 +11,7 @@ const handleZodError = (err: ZodError): IGenericErrorRes => {
 
   return {
     statusCode,
-    message: "Validation Error",
+    message: "Validation Error occurred",
     errorSources,
   };
 };
