@@ -18,7 +18,7 @@ export const initiatePayment = async (
     expiresIn: "1m",
   });
 
-  // const url = "https://onthego-backend.vercel.app/api/v1"
+ 
   const url = "http://localhost:5000/api/v1";
 
   const response = await axios.post(`${process.env.PAYMENT_URL}`, {
