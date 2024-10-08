@@ -1,3 +1,4 @@
+//follower route...
 import { Router } from "express";
 import { isAuthenticatedUser } from "../../middlewares/auth";
 import { followerController } from "./follower.controller";

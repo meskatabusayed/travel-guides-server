@@ -1,3 +1,4 @@
+//post interface...
 export interface IPost {
   content: string;
   images: string[];

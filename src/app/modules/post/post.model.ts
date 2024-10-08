@@ -1,3 +1,4 @@
+//post model...
 import mongoose, { Types } from "mongoose";
 
 const PostSchema = new mongoose.Schema(

@@ -1,3 +1,4 @@
+//comment interface....
 export interface IComment {
   comment: string;
   post: string;

@@ -1,3 +1,4 @@
+//comment route...
 import { Router } from "express";
 import { isAuthenticatedUser } from "../../middlewares/auth";
 import { commentController } from "./comment.controller";

@@ -1,3 +1,4 @@
+//follower services..
 import AppError from "../../errors/AppError";
 import User from "../user/user.model";
 import { IFollower } from "./follower.interface";

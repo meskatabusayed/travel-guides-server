@@ -1,3 +1,4 @@
+//payment model...
 import mongoose, { Schema } from "mongoose";
 import { IPayment } from "./payment.interface";
 
