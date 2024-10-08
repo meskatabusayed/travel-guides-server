@@ -37,7 +37,7 @@ export const initiatePayment = async (
     success_url: `${url}/payment/success?pt=${PT}`,
     fail_url: `${url}/payment/fail?pt=${PT}`,
     cancel_url: `${url}/payment/fail?pt=${PT}`,
-    desc: "Course Fee",
+    desc: "premium fee",
     type: "json",
   });
 

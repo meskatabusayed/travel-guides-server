@@ -1,3 +1,4 @@
+//category controller   ......
 import { catchAsyncError } from "../../../utils/catchAsyncError";
 import sendResponse from "../../../utils/sendResponse";
 import categoryService from "./category.service";
