@@ -84,13 +84,12 @@ import handleValidationError from '../errors/handleValidationError';
 import handleZodError from '../errors/handleZodError';
 import handleDuplicateError from "../errors/handleDuplicateError";
 import { IErrorSources } from "../interface/error";
-// import { TImageFiles } from '../interfaces/image.interface';
-// import { deleteImageFromCloudinary } from '../utils/deleteImage';
+
 import { TImageFiles } from '../interface/image.interface';
 import { deleteImageFromCloudinary } from '../../utils/deleteImage';
 
 const globalErrorHandler: ErrorRequestHandler = async (err, req, res, next) => {
-  //setting default values
+  
   let statusCode = 500;
   let message = 'Something went wrong!';
   let errorSources: IErrorSources = [
@@ -143,7 +142,7 @@ const globalErrorHandler: ErrorRequestHandler = async (err, req, res, next) => {
     ];
   }
 
-  //ultimate return
+  
   return res.status(statusCode).json({
     success: false,
     message,

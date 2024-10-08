@@ -83,17 +83,17 @@ export const createUserController = catchAsyncError(async (req, res) => {
 
     const { email, password } = body;
 
-    // Create authentication details
+   
     const auth = await Authentication.create([{ email, password }], {
       session,
     });
 
-    // Create the user document linked to the auth record
+   
     const user = await User.create([{ ...body, auth: auth[0]._id }], {
       session,
     });
 
-    // Generate tokens
+    
     const token = createAcessToken(
       {
         email: auth[0].email,
@@ -109,11 +109,11 @@ export const createUserController = catchAsyncError(async (req, res) => {
       role: auth[0].role,
     });
 
-    // Commit transaction
+    
     await session.commitTransaction();
     session.endSession();
 
-    // Send response
+    
     res.json({
       data: user[0],
       message: "User created successfully",
@@ -122,7 +122,7 @@ export const createUserController = catchAsyncError(async (req, res) => {
       refreshToken,
     });
   } catch (error) {
-    // Rollback transaction in case of error
+   
     await session.abortTransaction();
     session.endSession();
     throw error;
@@ -252,7 +252,7 @@ export const changeRole = catchAsyncError(async (req, res) => {
   });
 });
 
-// reset password
+
 export const resetPassword = catchAsyncError(async (req, res) => {
   const { password, oldPassword } = req.body;
 
@@ -266,7 +266,7 @@ export const resetPassword = catchAsyncError(async (req, res) => {
   }
 
   const theUser = await Authentication.findOne({ email });
-  // check if there no user
+  
   if (!theUser) {
     return sendResponse(res, {
       message: "user not found",
@@ -276,7 +276,7 @@ export const resetPassword = catchAsyncError(async (req, res) => {
     });
   }
 
-  // varify old password
+ 
   const isOk = await bcrypt.compare(oldPassword, theUser.password as string);
   if (!isOk) {
     return sendResponse(res, {
@@ -287,10 +287,10 @@ export const resetPassword = catchAsyncError(async (req, res) => {
     });
   }
 
-  // create new hash password
+ 
   const newPass = await bcrypt.hash(password, 10);
 
-  // update the new
+ 
   const updatePassword = await Authentication.findOneAndUpdate(
     { email },
     {
@@ -307,7 +307,7 @@ export const resetPassword = catchAsyncError(async (req, res) => {
   });
 });
 
-// forgot-password controller
+
 export const forgotPassword = catchAsyncError(async (req, res) => {
   const { email } = req.body;
 
@@ -366,7 +366,7 @@ export const forgotPassword = catchAsyncError(async (req, res) => {
   });
 });
 
-// Resetting new password
+
 export const recoverPassword = catchAsyncError(async (req, res) => {
   const { password } = req.body;
   const getToken = req.header("Authorization");

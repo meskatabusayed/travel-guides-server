@@ -74,7 +74,7 @@ export const isAuthenticatedUser = async (
       token,
       process.env.JWT_ACCESS_SECRET as string
     );
-    // console.log("desss", decoded);
+    
 
     if (!decoded)
       return res.status(401).json({ message: "Invalid Authentication." });
@@ -137,7 +137,7 @@ export const isAuthenticatedUserOptional = async (
 
     next();
   } catch (err: any) {
-    // If there's an error (like token verification fails), return 401
+   
     return res.status(401).json({ message: err.message });
   }
 };

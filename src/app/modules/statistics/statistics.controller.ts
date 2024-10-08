@@ -1,3 +1,4 @@
+//statics controller...
 import { catchAsyncError } from "../../../utils/catchAsyncError";
 import sendResponse from "../../../utils/sendResponse";
 import statisticsService from "./statistics.service";
