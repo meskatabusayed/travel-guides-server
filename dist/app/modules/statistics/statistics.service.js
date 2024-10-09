@@ -12,6 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+//statistics services...
 const payment_model_1 = __importDefault(require("../payment/payment.model"));
 const user_model_1 = __importDefault(require("../user/user.model"));
 const getPaymentStatistic = (_a) => __awaiter(void 0, [_a], void 0, function* ({ from, to }) {

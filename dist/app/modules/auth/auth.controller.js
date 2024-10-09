@@ -1,4 +1,39 @@
 "use strict";
+/* import httpStatus from "http-status";
+// import catchAsync from "../../utils/catchAsync";
+// import { AuthServices } from "./auth.service";
+import catchAsync from "../../utils/catchAsync";
+import { AuthServices } from "./auth.service";
+
+const loginUserDB = catchAsync(async (req, res) => {
+  const result = await AuthServices.loginUser(req.body);
+  const { user, accessToken } = result;
+  res.status(httpStatus.OK).json({
+    statusCode: httpStatus.OK,
+    success: true,
+    message: "User is logged in successfully",
+    token: accessToken,
+    data: user,
+  });
+});
+
+// // refreshToken
+// const refreshTokenDB = catchAsync(async (req, res) => {
+//   const { refreshToken } = req.cookies;
+//   const result = await AuthServices.refreshToken(refreshToken);
+//   sendResponse(res, {
+//     statusCode: httpStatus.OK,
+//     success: true,
+//     message: "Access token is retrieved successfully!",
+//     data: result,
+//   });
+// });
+
+
+export const AuthControllers = {
+  loginUserDB,
+  // refreshTokenDB
+}; */
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -24,6 +59,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.recoverPassword = exports.forgotPassword = exports.resetPassword = exports.changeRole = exports.loginController = exports.genereteAccessToken = exports.createUserController = exports.authSateController = void 0;
+//
 /* eslint-disable no-unused-vars */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -64,15 +100,12 @@ exports.createUserController = (0, catchAsyncError_1.catchAsyncError)((req, res)
             });
         }
         const { email, password } = body;
-        // Create authentication details
         const auth = yield auth_model_1.default.create([{ email, password }], {
             session,
         });
-        // Create the user document linked to the auth record
         const user = yield user_model_1.default.create([Object.assign(Object.assign({}, body), { auth: auth[0]._id })], {
             session,
         });
-        // Generate tokens
         const token = (0, jwtToken_1.createAcessToken)({
             email: auth[0].email,
             id: auth[0]._id.toString(),
@@ -83,10 +116,8 @@ exports.createUserController = (0, catchAsyncError_1.catchAsyncError)((req, res)
             id: auth[0]._id,
             role: auth[0].role,
         });
-        // Commit transaction
         yield session.commitTransaction();
         session.endSession();
-        // Send response
         res.json({
             data: user[0],
             message: "User created successfully",
@@ -96,7 +127,6 @@ exports.createUserController = (0, catchAsyncError_1.catchAsyncError)((req, res)
         });
     }
     catch (error) {
-        // Rollback transaction in case of error
         yield session.abortTransaction();
         session.endSession();
         throw error;
@@ -203,7 +233,6 @@ exports.changeRole = (0, catchAsyncError_1.catchAsyncError)((req, res) => __awai
         message: "Successfully update role",
     });
 }));
-// reset password
 exports.resetPassword = (0, catchAsyncError_1.catchAsyncError)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { password, oldPassword } = req.body;
     const user = req.user;
@@ -214,7 +243,6 @@ exports.resetPassword = (0, catchAsyncError_1.catchAsyncError)((req, res) => __a
         });
     }
     const theUser = yield auth_model_1.default.findOne({ email });
-    // check if there no user
     if (!theUser) {
         return (0, sendResponse_1.default)(res, {
             message: "user not found",
@@ -223,7 +251,6 @@ exports.resetPassword = (0, catchAsyncError_1.catchAsyncError)((req, res) => __a
             statusCode: 404,
         });
     }
-    // varify old password
     const isOk = yield bcrypt_1.default.compare(oldPassword, theUser.password);
     if (!isOk) {
         return (0, sendResponse_1.default)(res, {
@@ -233,9 +260,7 @@ exports.resetPassword = (0, catchAsyncError_1.catchAsyncError)((req, res) => __a
             statusCode: 401,
         });
     }
-    // create new hash password
     const newPass = yield bcrypt_1.default.hash(password, 10);
-    // update the new
     const updatePassword = yield auth_model_1.default.findOneAndUpdate({ email }, {
         $set: {
             password: newPass,
@@ -247,7 +272,6 @@ exports.resetPassword = (0, catchAsyncError_1.catchAsyncError)((req, res) => __a
         user: Object.assign(Object.assign({}, updatePassword === null || updatePassword === void 0 ? void 0 : updatePassword.toObject()), { password: "****" }),
     });
 }));
-// forgot-password controller
 exports.forgotPassword = (0, catchAsyncError_1.catchAsyncError)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { email } = req.body;
     const user = yield auth_model_1.default.findOne({ email });
@@ -289,7 +313,6 @@ exports.forgotPassword = (0, catchAsyncError_1.catchAsyncError)((req, res) => __
         message: "Check your email to recover the password",
     });
 }));
-// Resetting new password
 exports.recoverPassword = (0, catchAsyncError_1.catchAsyncError)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { password } = req.body;
     const getToken = req.header("Authorization");

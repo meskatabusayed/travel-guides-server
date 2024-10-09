@@ -1,4 +1,5 @@
 "use strict";
+//not found route...
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.notFound = void 0;
 const notFound = (req, res) => {

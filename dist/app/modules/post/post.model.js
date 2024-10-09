@@ -23,6 +23,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+//post model...
 const mongoose_1 = __importStar(require("mongoose"));
 const PostSchema = new mongoose_1.default.Schema({
     content: {

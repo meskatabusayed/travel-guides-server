@@ -13,6 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.failedPaymentController = exports.successPaymentController = void 0;
+//payment controller...
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const catchAsyncError_1 = require("../../../utils/catchAsyncError");
 const sendResponse_1 = __importDefault(require("../../../utils/sendResponse"));

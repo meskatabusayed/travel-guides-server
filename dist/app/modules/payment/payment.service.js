@@ -13,6 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.paymentService = exports.failedPayment = exports.createPayment = void 0;
+//payment service...
 const fs_1 = require("fs");
 const path_1 = require("path");
 const user_model_1 = __importDefault(require("../user/user.model"));

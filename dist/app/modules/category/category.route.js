@@ -1,4 +1,5 @@
 "use strict";
+//category route.......
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const auth_1 = require("../../middlewares/auth");

@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+//statics route..
 const express_1 = require("express");
 const auth_1 = require("../../middlewares/auth");
 const statistics_controller_1 = require("./statistics.controller");

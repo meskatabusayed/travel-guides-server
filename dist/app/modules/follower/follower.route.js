@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+//follower route...
 const express_1 = require("express");
 const auth_1 = require("../../middlewares/auth");
 const follower_controller_1 = require("./follower.controller");

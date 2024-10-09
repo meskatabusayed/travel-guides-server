@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+//post route...
 const express_1 = require("express");
 const auth_1 = require("../../middlewares/auth");
 const validator_1 = require("../../middlewares/validator");

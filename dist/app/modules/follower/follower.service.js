@@ -13,6 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.followerService = void 0;
+//follower services..
 const AppError_1 = __importDefault(require("../../errors/AppError"));
 const user_model_1 = __importDefault(require("../user/user.model"));
 const follower_model_1 = __importDefault(require("./follower.model"));

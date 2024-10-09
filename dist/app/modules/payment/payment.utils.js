@@ -13,6 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.initiatePayment = void 0;
+//payment utils...
 const axios_1 = __importDefault(require("axios"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const initiatePayment = (payload, userId) => __awaiter(void 0, void 0, void 0, function* () {
@@ -25,8 +26,7 @@ const initiatePayment = (payload, userId) => __awaiter(void 0, void 0, void 0, f
     const PT = jsonwebtoken_1.default.sign(paymentTokenObj, process.env.SIGNATURE_KEY, {
         expiresIn: "1m",
     });
-    // const url = "https://onthego-backend.vercel.app/api/v1"
-    const url = "http://localhost:5000/api/v1";
+    const url = "https://travel-guides-server.vercel.app/api/v1";
     const response = yield axios_1.default.post(`${process.env.PAYMENT_URL}`, {
         store_id: process.env.STORE_ID,
         signature_key: process.env.SIGNATURE_KEY,
@@ -43,7 +43,7 @@ const initiatePayment = (payload, userId) => __awaiter(void 0, void 0, void 0, f
         success_url: `${url}/payment/success?pt=${PT}`,
         fail_url: `${url}/payment/fail?pt=${PT}`,
         cancel_url: `${url}/payment/fail?pt=${PT}`,
-        desc: "Course Fee",
+        desc: "premium fee",
         type: "json",
     });
     return response.data;

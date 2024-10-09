@@ -1,4 +1,49 @@
 "use strict";
+/* import { NextFunction, Request, Response } from "express";
+import jwt, { JwtPayload } from 'jsonwebtoken';
+import config from "../config";
+// import catchAsync from "../utils/catchAsync";
+import httpStatus from "http-status";
+import AppError from "../Error/AppError";
+import { CUserRole } from "../Module/User/user.interface";
+import { User } from "../Module/User/user.model";
+import catchAsync from "../utils/catchAsync";
+
+
+export const AuthValidated = (...requierdRole: CUserRole[]) => {
+  return catchAsync(async (req: Request, res: Response, next: NextFunction) => {
+    const token = req.headers.authorization;
+    if (!token) {
+      throw new AppError(httpStatus.UNAUTHORIZED, "You are not authorized!");
+    }
+
+    // Decode the token
+    const decoded = jwt.verify(
+      token.split(' ')[1],
+      config.jwt_access_secret as string
+    ) as JwtPayload;
+ 
+    const { userId } = decoded;
+    
+    // Find the user by ID
+    const isExistsUser = await User.findById(userId);
+    if (!isExistsUser) {
+      throw new AppError(httpStatus.UNAUTHORIZED, "You are not authorized!");
+    }
+
+    // Check if the user's role is included in the required roles
+    if (!requierdRole.includes(isExistsUser.role)) {
+      throw new AppError(
+        httpStatus.UNAUTHORIZED,
+        "You have no access to this route"
+      );
+    }
+
+    // Attach decoded user to request
+    req.user = decoded as JwtPayload;
+    next();
+  });
+}; */
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -28,7 +73,6 @@ const isAuthenticatedUser = (req, res, next) => __awaiter(void 0, void 0, void 0
             return res.status(401).json({ message: "Token not provided" });
         }
         const decoded = jsonwebtoken_1.default.verify(token, process.env.JWT_ACCESS_SECRET);
-        // console.log("desss", decoded);
         if (!decoded)
             return res.status(401).json({ message: "Invalid Authentication." });
         const user = yield user_model_1.default.findOne({
@@ -39,7 +83,6 @@ const isAuthenticatedUser = (req, res, next) => __awaiter(void 0, void 0, void 0
         const auth = yield auth_model_1.default.findOne({ email: user.email });
         if (!auth)
             return res.status(404).json({ message: "User does not exist." });
-        // console.log("user =======", user);
         const payload = user.toObject();
         req.user = Object.assign(Object.assign({}, payload), { role: auth.role });
         next();
@@ -76,7 +119,6 @@ const isAuthenticatedUserOptional = (req, res, next) => __awaiter(void 0, void 0
         next();
     }
     catch (err) {
-        // If there's an error (like token verification fails), return 401
         return res.status(401).json({ message: err.message });
     }
 });
