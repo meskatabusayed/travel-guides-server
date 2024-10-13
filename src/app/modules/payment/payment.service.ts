@@ -4,6 +4,7 @@ import { join } from "path";
 import User from "../user/user.model";
 import Payment from "./payment.model";
 
+
 export const createPayment = async (
   amount: number,
   transactionId: string,
@@ -19,14 +20,14 @@ export const createPayment = async (
     isPremium: true,
   });
 
-  const filePath = join(__dirname, "../../templates/success.html");
+  const filePath = join(__dirname, "../public/templates/success.html");
   let file = readFileSync(filePath, "utf-8");
   file = file.replace("{{link}}", "/");
 
   return file;
 };
 export const failedPayment = async () => {
-  const filePath = join(__dirname, "../../templates/error.html");
+  const filePath = join(__dirname, "../public/templates/error.html");
   let file = readFileSync(filePath, "utf-8");
   file = file.replace("{{link}}", "/");
   return file;

@@ -27,14 +27,14 @@ const createPayment = (amount, transactionId, userId) => __awaiter(void 0, void 
     yield user_model_1.default.findByIdAndUpdate(userId, {
         isPremium: true,
     });
-    const filePath = (0, path_1.join)(__dirname, "../../templates/success.html");
+    const filePath = (0, path_1.join)(__dirname, "../public/templates/success.html");
     let file = (0, fs_1.readFileSync)(filePath, "utf-8");
     file = file.replace("{{link}}", "/");
     return file;
 });
 exports.createPayment = createPayment;
 const failedPayment = () => __awaiter(void 0, void 0, void 0, function* () {
-    const filePath = (0, path_1.join)(__dirname, "../../templates/error.html");
+    const filePath = (0, path_1.join)(__dirname, "../public/templates/error.html");
     let file = (0, fs_1.readFileSync)(filePath, "utf-8");
     file = file.replace("{{link}}", "/");
     return file;
